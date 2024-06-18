@@ -32,7 +32,7 @@
     },
     "objects" : {
         "human": {
-            "model": "/assets/models/human.glb",
+            "model": "/models/human.glb",
             "position": {
                 "x": 1,
                 "y": 1.05,
@@ -50,7 +50,7 @@
             }
         },
         "arcade" : {
-            "model": "/assets/models/arcade.glb",
+            "model": "/models/arcade.glb",
             "position": {
                 "x": -4,
                 "y": 0,
@@ -68,7 +68,7 @@
             }
         },
         "record_player" : {
-            "model": "/assets/models/record_player.glb",
+            "model": "/models/record_player.glb",
             "position": {
                 "x": -1.25,
                 "y": 1.2,
@@ -86,7 +86,7 @@
             }
         },
         "table" : {
-            "model" : "/assets/models/table.glb",
+            "model" : "/models/table.glb",
             "position": {
                 "x": -1,
                 "y": 0.7,

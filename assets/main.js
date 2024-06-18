@@ -4,9 +4,23 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
+/*
+// Changer d'url
+window.history.pushState("object or string", "Title", "/new-url");
+
+// Event listener changement d'url
+window.addEventListener("popstate", (e) => {
+});
+
+
+
+*/
+
 // Impost json file to get the positions of the objects
+
+
 let positions;
-await fetch("assets/positions_paysage.json")
+await fetch("/build/json/positions_paysage.json")
     .then((response) => response.json())
     .then((json) => (positions = json));
 
@@ -73,9 +87,9 @@ scene.add(ambientLight);
 for (let object in positions.objects) {
     let obj;
     const loader = new GLTFLoader();
-    console.log();
+
     loader.load(
-        positions.objects[object].model,
+        '/build' + positions.objects[object].model,
         function (gltf) {
             scene.add(gltf.scene);
             obj = gltf.scene;
@@ -114,7 +128,7 @@ for (let object in positions.objects) {
 // Title
 const loader = new FontLoader();
 
-loader.load( '/assets/fonts/ubuntu_regular.json', function ( font ) {
+loader.load( '/build/fonts/ubuntu_regular.json', function ( font ) {
 
 	const geometry = new TextGeometry( 'thibault delgrande', {
 		font: font,
@@ -143,8 +157,8 @@ camera.rotation.x = -0.5;
 camera.rotation.z = 0.25;
 
 // Camera controls
-//const controls = new OrbitControls(camera, renderer.domElement);
-//controls.update();
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.update();
 /*
 // Camera helper
 const cameraHelper = new THREE.CameraHelper(light.shadow.camera);
@@ -153,6 +167,9 @@ scene.add(cameraHelper);
 const cameraHelper2 = new THREE.CameraHelper(light2.shadow.camera);
 scene.add(cameraHelper2);
 */
+
+document.querySelector("#spinner-container").classList.add("hidden");
+
 // Animation loop
 function animate() {
     /*
